@@ -234,14 +234,117 @@ int BinaryTree::Height(Node* p) {
 
 int main() {
 	
+	cout << "\nWelcome to BINARY TREE Data Structure Program" << endl;
+	cout << "\nLets start by creating a Binary Tree....." << endl;
+	cout << "Choose an Option \n";
+	cout << "[1] - Create a Tree from root"<<endl;
+	cout << "[2]- Enter PreOrder and Inorder to generate a tree"<<endl;
+	cout << "\nEnter Your choice : ";
+	int ch_main;
+	cin >> ch_main;
+	
 	BinaryTree T1;
-	T1.CreateTree();
-	cout << endl;
-	T1.InOrder(T1.root);
-	cout << endl;
-	cout << "Nodes : " << T1.CountNodes(T1.root) << endl;
-	cout << "Height : " << T1.Height(T1.root) << endl;
+	int* pre, * In;
+	if (ch_main == 1) {
+		T1.CreateTree();
+	}
 
+	else if (ch_main == 2) {
+
+		int n;
+		cout << "\nEnter the PreOrder and Inorder" << endl;
+		cout << "Enter the number of elements in preOrder and InOrder : ";
+		cin >> n;
+		pre = new int[n];
+		In = new int[n];
+
+		cout << "Enter the elements in preOrder : ";
+		for (int i = 0; i < n; i++) {
+			cin >> pre[i];
+		}
+		cout << "\nNow enter the elements in InOrder : ";
+		for (int i = 0; i < n; i++) {
+			cin >> In[i];
+		}
+
+		T1.generateTree(pre, In, n);
+	}
+	else {
+		cout << "\nInvalid Choice" << endl;
+	}
+
+	int ch_sub;
+
+	cout << "\nNow Enter the Operation, you want to perform on this Binary Tree : <<endl";
+	do {
+		cout << "[1] - Get Preorder (Recurssive) " << endl;
+		cout << "[2] - Get Inorder (Recurssive) " << endl;
+		cout << "[3] - Get Postorder (Recurssive) " << endl;
+		cout << "[4] - Get Preorder (Iterative) " << endl;
+		cout << "[5] - Get Inorder (Iterative) " << endl;
+		cout << "[6] - Get Postorder (Iterative) " << endl;
+		cout << "[7] - Get Levelorder " << endl;
+		cout << "[8] - Count the number of Nodes " << endl;
+		cout << "[9] - Calculate Height of this Tree " << endl;
+		cout << "[0] - Quit" << endl;
+		cout << "\nEnter your choice : ";
+		cin >> ch_sub;
+		
+		if (ch_sub == 1) {
+			cout << "\nPreOrder : ";
+			T1.PreOrder(T1.root);
+			cout << endl<<endl;
+		}
+		else if (ch_sub == 2) {
+			cout << "\nInOrder : ";
+			T1.InOrder(T1.root);
+			cout << endl<<endl;
+		}
+
+		else if (ch_sub == 3) {
+			cout << "\nPostOrder : ";
+			T1.PostOrder(T1.root);
+			cout << endl<<endl;
+		}
+		else if (ch_sub == 4) {
+			cout << "\nPreOrder : ";
+			T1.itPreOrder(T1.root);
+			cout << endl << endl;
+		}
+		else if (ch_sub == 5) {
+			cout << "\nInOrder : ";
+			T1.itInOrder(T1.root);
+			cout << endl<<endl;
+		}
+		else if (ch_sub == 6) {
+			cout << "\nPostOrder : ";
+			T1.itPostOrder(T1.root);
+			cout << endl << endl;
+		}
+		else if (ch_sub == 7) {
+			cout << "\nLevel Order : ";
+			T1.LevelOrder(T1.root);
+			cout << endl<<endl;
+		}
+		else if (ch_sub == 8) {
+			cout<<"\nNodes : "<<T1.CountNodes(T1.root);
+			cout << endl<<endl;
+		}
+		else if (ch_sub == 9) {
+			cout<<"\nHeight : "<<T1.Height(T1.root);
+			cout << endl<<endl;
+		}
+		else if (ch_sub == 0) {
+			cout << "\nThanks for using this Application :)" << endl<<endl;
+		}
+
+		else {
+			cout << "\nInvalid choice" << endl<<endl;
+		}
+
+	} while (ch_sub != 0);
+
+	
 	return 0;
 }
 
